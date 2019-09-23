@@ -1,6 +1,8 @@
 # hcs-js4web
 Exercises in the JavaScript for Web Course at the Hamburg Coding School
 
+https://github.com/henningmu/js-workshop/blob/master/exercises/Session-01.md
+
 1. What's the value of `result`?
 
 ```js
