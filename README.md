@@ -19,6 +19,8 @@ const result = badlyNamedFunction(3, 5)
 const badlyNamedFunction = (a, b = 3) => a + b
 
 const result = badlyNamedFunction(4)
+
+// const result = 7
 ```
 
 ---

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>What will be logged?</title>
+</head>
+
+<body>
+    <script>
+
+        const person = { name: 'Henning', age: 28 }
+        const person2 = person
+        person2.name = 'Nina'
+
+        console.log(`Hello, ${person.name}!`)
+
+        // Hello, Nina!
+    </script>
+</body>
+
+</html>
