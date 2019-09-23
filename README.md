@@ -7,6 +7,8 @@ Exercises in the JavaScript for Web Course at the Hamburg Coding School
 const badlyNamedFunction = (a, b) => a + b
 
 const result = badlyNamedFunction(3, 5)
+
+// const result = 8
 ```
 
 ---
