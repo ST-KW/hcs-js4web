@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>filter()</title>
+</head>
+
+<body>
+    <script>
+        // Use filter() to select all adult (ie. 18 years or older) persons from the data given in exercise 9.
+
+        const persons = [
+            { name: 'Eddard', age: 41 },
+            { name: 'Catelyn', age: 40 },
+            { name: 'Daenerys', age: 16 },
+            { name: 'Tyrion', age: 32 },
+            { name: 'Jon', age: 16 },
+            { name: 'Brandon', age: 10 },
+            { name: 'Sansa', age: 13 },
+            { name: 'Arya', age: 11 },
+            { name: 'Theon', age: 16 },
+            { name: 'Davos', age: 49 },
+            { name: 'Jaime', age: 36 },
+            { name: 'Samwell', age: 17 },
+            { name: 'Cersei', age: 36 },
+            { name: 'Brienne', age: 32 }
+        ];
+
+        const adults = persons.filter(person => person.age > 18);
+
+        document.write("<pre>" + JSON.stringify(adults, null, 4) + "</pre>");
+
+
+    </script>
+</body>
+
+</html>
