@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>DOM Training</title>
+</head>
+
+<body>
+    <script>
+
+    </script>
+    <form>
+        <table>
+            <tr class="name-row">
+                <td>First name</td>
+                <td><input type="text" id="fn" /></td>
+            </tr>
+            <tr class="name-row">
+                <td>Last name</td>
+                <td><input type="text" id="ln" /></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" id="m" name="gender" />male<br />
+                    <input type="radio" id="f" name="gender" />female
+                </td>
+            </tr>
+            <tr>
+                <td>Phone number</td>
+                <td><input type="tel" id="tel" /></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="email" id="email" /></td>
+            </tr>
+            <tr>
+                <td>Kind of contact</td>
+                <td>
+                    <select>
+                        <option value="ir">Interview Request</option>
+                        <option value="mq">Membership Questions</option>
+                        <option value="pq">Partnership Questions</option>
+                        <option value="tq">Technology Questions</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Comment</td>
+                <td><textarea></textarea></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+
+        let InputResults = document.querySelectorAll('input, select, textarea')
+        let InputNameRow = document.querySelectorAll('.name-row')
+        let InputTypeText = document.querySelectorAll('[type="text"]')
+        let InputTypeTR = document.querySelector('tr')
+        let InputIDEmail = document.querySelectorAll('[id="email"]')
+        let NameRow = document.querySelectorAll('.name-row input')
+        let InputOptionSelect = document.querySelectorAll('option')
+
+        console.log(InputResults)
+        console.log(InputNameRow)
+        console.log(InputTypeText)
+        console.log(InputTypeTR)
+        console.log(InputIDEmail)
+        console.log(NameRow)
+        console.log(InputOptionSelect)
+
+        const options = document.querySelectorAll('option')
+        const values = [...options].map(option => option.value)
+
+        console.log(values)
+
+        const h1 = document.createElement('h1')
+        h1.innerHTML = 'Contact us'
+        const form = document.querySelector("form")
+        document.body.insertBefore(h1, form)
+
+        const button = document.createElement('button')
+        button.innerHTML = 'submit'
+        document.body.appendChild(button)
+
+        function displayBanner() {
+            const banner = document.createElement('div')
+            banner.innerHTML = '<br>Data successfully sent.'
+            document.body.appendChild(banner)
+        }
+
+        document.querySelector('button').addEventListener('click', displayBanner)
+
+    </script>
+
+
+</body>
+
+</html>

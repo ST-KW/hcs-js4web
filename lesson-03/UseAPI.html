@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Use API</title>
+</head>
+
+<body>
+
+
+    <script>
+        fetch("https://api.punkapi.com/v2/beers/")
+            .then(response => response.json())
+            .then(beers => {
+                ShowList(beers)
+            })
+
+        function ShowList(beers) {
+            let AllBeerNames = beers.map(beer => beer.name)
+            console.log(AllBeerNames)
+            document.write(AllBeerNames)
+        }
+
+    </script>
+
+
+</body>
+
+</html>
