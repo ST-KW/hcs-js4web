@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Star Wars Search!</h1>
+    <h1>Star Wars Characters Search!</h1>
     <form id='form'>
         <input id='input' />
         <button>Search</button>
@@ -19,7 +19,16 @@
         let TextInForm = document.getElementById('input')
 
         function SubmitSearch(event) {
+            //console.log("You searched for:", TextInForm.value)
             event.preventDefault()
+            // save search querie(s) into local Storage
+            let queries = JSON.parse(localStorage.getItem('queries'))
+            if (queries === null) {
+                queries = []
+            }
+            queries.push(TextInForm.value)
+            console.log(queries)
+            localStorage.setItem('queries', JSON.stringify(queries))
             fetch(`https://swapi.co/api/people/?search=${TextInForm.value}`)
                 .then(response => response.json())
                 .then(searchResult => {
@@ -40,6 +49,15 @@
 
         Form.addEventListener('submit', SubmitSearch)
 
+        let queries = JSON.parse(localStorage.getItem('queries'))
+        //console.log(queries)
+        //MVP
+        //document.write("<br>" + "Your last search: " + queries)
+        if (queries.length > 0) {
+            const pastSearches = queries.join(', ')
+            const searchNode = document.createTextNode("Your last searches: " + pastSearches)
+            document.body.appendChild(searchNode)
+        }
 
 
     </script>

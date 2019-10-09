@@ -1,0 +1,55 @@
+html{
+    background-color:black;
+    color: whitesmoke;
+}
+
+a:link, a:visited {
+    color: goldenrod;
+    text-decoration: none;
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    padding: 14px 25px;
+    margin: 10px 10px;
+    display: block;
+  }
+  
+a:hover {
+    color: goldenrod;
+    text-decoration: underline;
+  }
+  
+a:active {
+    color: goldenrod;
+    text-decoration: underline;
+  }
+
+h1{
+    color:gold;
+    text-align: center;
+}
+
+p {
+    font-size: 50px;
+    color: gold;
+}
+
+form {
+text-align: center;
+}
+
+button {
+    color: lightgray;
+    background-color: black;
+    border: solid 2px white;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    -webkit-box-shadow: 2px 2px 2px 0px gold;
+    -moz-box-shadow: 2px 2px 2px 0px gold;
+    box-shadow: 2px 2px 2px 0px gold;
+  }
+
+  .box {
+    padding: 0px 40px;
+    }

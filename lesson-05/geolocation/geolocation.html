@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Geolocation</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h1>My Geolocation</h1>
+    <div>
+        <button>Show my geolocation</button>
+    </div>
+
+    <script>
+
+        function showLocation(event) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords
+                        console.log('Location:', latitude, longitude)
+                    },
+                    (error) => {
+                        console.log('Oh no:', error)
+                    }
+                )
+            }
+        }
+
+        document.querySelector('button').addEventListener('click', showLocation)
+
+    </script>
+
+</body>
+
+</html>
