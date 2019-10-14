@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase 1st Tests</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig 
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const databitch = firebase.firestore()
+
+        function handleFormSubmit(event) {
+            event.preventDefault()
+            PostTitle = document.querySelector('input[name="title"]')
+            PostDescription = document.querySelector('textarea[name="description"]')
+            console.log(PostTitle.value)
+            console.log(PostDescription.value)
+
+            databitch
+                .collection('posts')
+                .add({
+                    title: PostTitle.value,
+                    description: PostDescription.value,
+                    postedAt: new Date()
+                })
+                .then(docRef => console.log('Created data:', docRef.id))
+                .catch(error => console.error('Failed to create data', error))
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="title">Title</label><br>
+        <input name="title" placeholder="Write title…" />
+        <br><br>
+        <label for="description">Description</label><br>
+        <textarea name="description" placeholder="Write a description…"></textarea>
+        <br><br>
+        <button onclick="handleFormSubmit(event)">Submit</button>
+    </form>
+</body>
+
+</html>
