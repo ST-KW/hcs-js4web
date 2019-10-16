@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase 1st Tests</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-storage.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const databitch = firebase.firestore()
+
+        function handleFormSubmit(event) {
+            event.preventDefault()
+            PostTitle = document.querySelector('input[name="title"]')
+            PostDescription = document.querySelector('textarea[name="description"]')
+            console.log(PostTitle.value)
+            console.log(PostDescription.value)
+
+            const storage = firebase.storage()
+            // read a file from an input element
+            const inputElement = document.getElementById('file-input')
+            const file = inputElement.files[0]
+            const imageRef = storage.ref(`images/${file.name}`)
+            imageRef
+                .put(file)
+                .then(snapshot => {
+                    console.log('Uploaded file!')
+                    imageRef.getDownloadURL().then(url => {
+                        databitch
+                            .collection('posts')
+                            .add({
+                                title: PostTitle.value,
+                                description: PostDescription.value,
+                                postedAt: new Date(),
+                                url: url
+
+                            })
+                            .then(docRef => console.log('Created data:', docRef.id))
+                            .catch(error => console.error('Failed to create data', error))
+                    })
+                })
+                .catch(error => console.error('Failed to upload', error))
+
+        }
+
+        function loadAllData() {
+            databitch
+                .collection('posts')
+                .get()
+                .then(snapshot => {
+                    snapshot.forEach(post => {
+                        const allData = post.data()
+                        const titleElement = document.createElement("h1")
+                        titleElement.innerText = allData.title
+                        document.body.appendChild(titleElement)
+
+                        const descriptionElement = document.createElement("div")
+                        descriptionElement.innerText = allData.description
+                        document.body.appendChild(descriptionElement)
+
+                        const imageElement = document.createElement("img")
+                        imageElement.src = allData.url
+                        document.body.appendChild(imageElement)
+
+                    })
+                })
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <label for="title">Title</label><br>
+        <input name="title" placeholder="Write title…" />
+        <br><br>
+        <label for="description">Description</label><br>
+        <textarea name="description" placeholder="Write a description…"></textarea>
+        <br><br>
+        <button type="submit" onclick="handleFormSubmit(event)">Submit</button>
+        <br><br>
+        <button type="button" onclick="loadAllData()">Load all Data</button>
+        <br><br>
+        <input id="file-input" type="file">
+    </form>
+</body>
+
+</html>
